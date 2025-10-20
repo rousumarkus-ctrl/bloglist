@@ -7,7 +7,7 @@ export default [
   {
     files: ['**/*.js'],
     languageOptions: {
-      sourceType: 'commonjs',
+      sourceType: 'module',
       globals: { ...globals.node },
       ecmaVersion: 'latest',
     },
@@ -25,11 +25,8 @@ export default [
       'arrow-spacing': ['error', { before: true, after: true }],
       'no-console': 'off',
     },
-    parserOptions: {
-      sourceType: 'module',
-    },
   },
   {
-    ignores: ['dist/**'],
+    ignores: ['dist/**', 'frontend'],
   },
 ]
