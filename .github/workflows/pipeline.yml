@@ -65,6 +65,17 @@ jobs:
           retention-days: 30
       - name: Test
         run: npm run test
+
+      - name: Job successful
+        uses: sarisia/actions-status-discord@v1.15.4
+        if: ${{ success() }}
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+      - name: Job failed
+        uses: sarisia/actions-status-discord@v1.15.4
+        if: ${{ failure() }}
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-latest
